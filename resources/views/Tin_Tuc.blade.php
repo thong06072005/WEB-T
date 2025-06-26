@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tin Tức - BaloVuiVe</title>
-    <link rel="icon" href="image/logo.png">
-    <link rel="stylesheet" href="./vendor/bootstrap/css/bootstrap.min.css">
-    <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="./vendor/jquery/jquery-3.7.1.min.js"></script>
+    <link rel="icon" href="{{ asset('image/logo.png') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery/jquery-3.7.1.min.js') }}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 </head>
-    
+
 <body>
     <div class="container-fluid">
         <!-- promo_banner -->
@@ -27,8 +27,7 @@
             <!-- navigation -->
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="Trang_Chu.php"><img src="./image/logo.png" alt="erorr" width="90px">
-                </a>
+                    <a class="navbar-brand" href="Trang_Chu.php"><img src="{{ asset('image/logo.png') }}" alt="logo" width="90px"></a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-5 fw-semibold">
                             <li class="nav-item">
@@ -57,16 +56,14 @@
                         </button>
                         <a href="Gio_Hang.php" class="icon mx-2 fs-2" id="shopping_cart"><i
                                 class="fa-solid fa-cart-shopping position-relative">
-                                <span
-                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-flex align-items-center justify-content-center">
-                                    34
-                                </span>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-flex align-items-center justify-content-center">34</span>
                             </i></a>
                         <a href="Dang_Nhap.php" class="icon mx-2 fs-2" id="login"><i class="fa-solid fa-user"></i></a>
                     </div>
                 </div>
             </nav>
         </header>
+
         <main>
             <div class="container-fluid my-5">
                 <div class="card text-center" id="T-card">
@@ -274,6 +271,6 @@
     </div>
 </body>
 
-<script src="js/main.js"></script>
+<script src="{{ asset('js/main.js') }}"></script>
 
 </html>

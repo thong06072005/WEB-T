@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liên Hệ - BaloVuiVe</title>
-    <link rel="icon" href="image/logo.png">
-    <link rel="stylesheet" href="./vendor/bootstrap/css/bootstrap.min.css">
-    <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="./vendor/jquery/jquery-3.7.1.min.js"></script>
+    <title>Tin Tức - BaloVuiVe</title>
+    <link rel="icon" href="{{ asset('image/logo.png') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery/jquery-3.7.1.min.js') }}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 </head>
 
 <body>
@@ -22,11 +22,12 @@
             <p class="promo_content m-0 fade d-none">Freeship toàn quốc cho đơn hàng từ 500K!</p>
             <p class="promo_content m-0 fade d-none">Đăng ký thành viên để nhận nhiều ưu đãi!</p>
         </div>
+        <!-- header -->
         <header class="row sticky-top">
             <!-- navigation -->
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#"><img src="./image/logo.png" alt="erorr" width="90px"></a>
+                    <a class="navbar-brand" href="Trang_Chu.php"><img src="{{ asset('image/logo.png') }}" alt="logo" width="90px"></a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-5 fw-semibold">
                             <li class="nav-item">
@@ -36,10 +37,10 @@
                                 <a class="nav-link" href="San_Pham.php">SẢN PHẨM</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="Lien_he.php">LIÊN HỆ</a>
+                                <a class="nav-link" href="Lien_he.php">LIÊN HỆ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Tin_Tuc.php">TIN TỨC</a>
+                                <a class="nav-link active" href="Tin_Tuc.php">TIN TỨC</a>
                             </li>
                         </ul>
                         <form class="d-flex" role="search">
@@ -55,16 +56,14 @@
                         </button>
                         <a href="Gio_Hang.php" class="icon mx-2 fs-2" id="shopping_cart"><i
                                 class="fa-solid fa-cart-shopping position-relative">
-                                <span
-                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-flex align-items-center justify-content-center">
-                                    34
-                                </span>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-flex align-items-center justify-content-center">34</span>
                             </i></a>
                         <a href="Dang_Nhap.php" class="icon mx-2 fs-2" id="login"><i class="fa-solid fa-user"></i></a>
                     </div>
                 </div>
             </nav>
         </header>
+
         <main>
             <!-- bảng thông tin liên hệ -->
 
@@ -94,7 +93,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label fw-semibold">Nội Dung Góp Ý</label>
-                        <textarea class="form-control" name="NoiDungGopY" rows="3" required
+                        <textarea class="form-control" name="feedback" rows="3" required
                             placeholder="Tôi Yêu Balo Vui Vẻ"></textarea>
                     </div>
 
@@ -194,6 +193,7 @@
     </div>
 </body>
 
-<script src="js/main.js"></script>
+<script src="{{ asset('js/main.js') }}"></script>
+
 
 </html>
