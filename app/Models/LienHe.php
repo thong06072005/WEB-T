@@ -9,7 +9,9 @@ use Database\Factories\LienHeFactory;
 class LienHe extends Model
 {
     use HasFactory;
-    protected $table = 'thongtingopy';
+    protected $table = 'thong_tin_gop_y';
+
+    public $timestamps = false;
     protected static function newFactory()
     {
         return  LienHeFactory::new();
