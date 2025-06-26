@@ -262,28 +262,37 @@ const decrease = -1;
 
 // Kiểm tra thông tin góp ý 
 function contactValidate(frm) {
+  // Xóa lỗi cũ
+  document.getElementById("error-email").innerText = "";
+  document.getElementById("error-fullname").innerText = "";
+  document.getElementById("error-feedback").innerText = "";
+
+  var isValid = true;
+
   var emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-  if (emailReg.test(frm.email.value) == false) {
-    alert("Vui lòng nhập email hợp lệ.");
-    frm.email.focus();
-    return false;
-  }
-  if (frm.fullname.value.length < 4) {
-    alert("Họ tên có tối thiểu 4 ký tự.");
-    frm.fullname.focus();
-    return false;
-  }
-  if (frm.textbox.value.length < 10) {
-    alert("Nội dung góp ý có tối thiểu 10 ký tự.");
-    frm.textbox.focus();
-    return false;
+  if (!emailReg.test(frm.email.value)) {
+    document.getElementById("error-email").innerText = "Vui lòng nhập email hợp lệ.";
+    isValid = false;
   }
 
-  if (frm.textbox.value.length >= 200) {
-    alert("Nội dung góp ý có tối đa 200 ký tự.");
-    frm.textbox.focus();
-    return false;
+  if (frm.fullname.value.length < 4) {
+    document.getElementById("error-fullname").innerText = "Họ tên có tối thiểu 4 ký tự.";
+    isValid = false;
   }
+
+  if (frm.feedback.value.length < 10) {
+    document.getElementById("error-feedback").innerText = "Nội dung góp ý có tối thiểu 10 ký tự.";
+    isValid = false;
+  }
+
+  if (frm.feedback.value.length > 200) {
+    document.getElementById("error-feedback").innerText = "Nội dung góp ý có tối đa 200 ký tự.";
+    isValid = false;
+  }
+
+  if (!isValid) return false;
+
+  // Nếu hợp lệ
   alert("Đã gửi dữ liệu liên hệ.");
   return true;
 }

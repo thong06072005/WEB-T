@@ -79,22 +79,43 @@
 
             <!-- form gửi ý kiến cho cửa hàng -->
 
-            <form action="xuly.php" method="post" enctype="multipart/form-data"
-                onsubmit="return contactValidate(this);">
+            @if(session('success'))
+             <div class="container mt-3">
+             <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+             </div>
+@endif
+            <form action="{{ route('store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
                 <div class="container bg-light my-5 p-4" id="T-contact-form">
                     <h2 class="text-center">Gửi Ý Kiến Cho Cửa Hàng</h2>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1 " class="form-label fw-semibold">Họ Và Tên</label>
-                        <input type="text" class="form-control" name="fullname" placeholder="Tên của bạn" required>
+                   <div class="mb-3">
+                    <label class="form-label fw-semibold">Họ Và Tên</label>
+                    <input type="text" class="form-control" name="fullname" placeholder="Tên của bạn" value="{{ old('fullname') }}">
+                    @error('fullname')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                    <div id="error-fullname" class="text-danger"></div>
                     </div>
+
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1 " class="form-label fw-semibold">Địa Chỉ Email</label>
-                        <input type="email" class="form-control" name="email" placeholder="name@example.com" required>
+                    <label class="form-label fw-semibold">Địa Chỉ Email</label>
+                    <input type="email" class="form-control" name="email" placeholder="name@example.com" value="{{ old('email') }}">
+                    @error('email')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                    <div id="error-email" class="text-danger"></div>
                     </div>
+
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label fw-semibold">Nội Dung Góp Ý</label>
-                        <textarea class="form-control" name="feedback" rows="3" required
-                            placeholder="Tôi Yêu Balo Vui Vẻ"></textarea>
+                    <label class="form-label fw-semibold">Nội Dung Góp Ý</label>
+                    <textarea class="form-control" name="feedback" rows="3" placeholder="Tôi Yêu Balo Vui Vẻ" ></textarea>
+                    @error('feedback')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                    <div id="error-feedback" class="text-danger"></div>
                     </div>
 
                     <div class="col-12 text-center">
