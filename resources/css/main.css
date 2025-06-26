@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* header */
+
+.promo_height {
+  height: 30px;
+}
+
+.icon {
+  color: #495be5;
+}
+
+.search-btn {
+  border-color: #495be5;
+  color: #495be5;
+}
+
+.search-btn:hover, .search-btn:active{
+  background-color: #495be5 !important;
+  border-color: #495be5 !important;
+}
+
+.fade_customize {
+  transition: opacity 1s ease-in-out !important;
+}
+
+.badge_customize {
+  font-size: 10px !important;
+  padding: 2px 4px !important;
+  min-width: 12px;
+  min-height: 18px;
+}
+
+/* home page */
+
+.carousel-control-next_customize .carousel-control-prev_customize {
+  width: 12% !important;
+}
+
+.card {
+  width: 100%;
+}
+
+.card-text {
+  font-weight: 600;
+}
+
+.slogan {
+  color: #495be5;
+}
+
+/* login */
+
+.google_login {
+  background-color: #db4a39;
+  border-radius: 0.375rem;
+}
+
+.google_login:hover {
+  background-color: #e27164;
+}
+
+.facebook_login {
+  background-color: #3b5998;
+  border-radius: 0.375rem;
+}
+
+.facebook_login:hover {
+  background-color: #4c6fb9;
+}
+
+/* Trang Tin Tức và Trang Liên Hệ CSS */
+
+#T-contact-form,
+#T-contact-info {
+  border-radius: 10px;
+}
+
+#map {
+  width: 650px;
+  height: 400px;
+}
+
+#sp {
+  padding-top: 20px;
+  width: 400px;
+}
+
+
+.T-sp {
+  transition: transform 0.4s ease-in-out;
+  width: 34rem;
+  margin-bottom: 40px;
+}
+
+.T-sp:hover {
+  transform: scale(1.05);
+}
+
+.btn-dark:hover {
+  background-color: #495be5;
+  border-color: #495be5;
+}
+
+.T-sp {
+  margin-bottom: 40px;
+}
+
+#T-contact-form,
+#T-contact-info {
+  border-radius: 10px;
+}
+
+#map {
+  width: 650px;
+  height: 400px;
+}
+
+#sp {
+  padding-top: 20px;
+  width: 400px;
+}
+
+.card-text2 {
+  display:-webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
