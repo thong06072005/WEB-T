@@ -68,26 +68,27 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8">
                     <div class="bg-white p-4 rounded shadow">
-                        <h3 class="mb-4 text-center text-primary">Gửi Bài Viết Mới</h3>
-                        <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+                        <h3 class="mb-4 text-center text-primary">Sửa Bài Viết</h3>
+                        <form method="POST" action="{{ route('posts.update', ['ma_tin_tuc' => $post->ma_tin_tuc]) }}" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="_method" value="PUT">
                             <div class="mb-3">
                                 <label for="title" class="form-label fw-semibold">Tiêu Đề</label>
-                                <input type="text" class="form-control" id="title" name="title" placeholder="Nhập tiêu đề tin tức...">
+                                <input type="text" class="form-control" id="title" name="title" placeholder="Nhập tiêu đề tin tức..." value="{{ $post->tieu_de }}">
                             </div>
 
                             <div class="mb-3">
                                 <label for="content" class="form-label fw-semibold">Nội Dung</label>
-                                <textarea class="form-control" id="content" name="content" rows="5" placeholder="Nhập nội dung chi tiết..."></textarea>
+                                <textarea class="form-control" id="content" name="content" rows="5" placeholder="Nhập nội dung chi tiết...">{{ $post->noi_dung }}</textarea>
                             </div>
 
                             <div class="mb-3">
                                 <label for="image" class="form-label fw-semibold">Hình Ảnh</label>
-                                <input type="file" class="form-control" id="image" name="image">
+                                <input type="file" class="form-control" id="image" name="image" value="{{ $post->hinh_anh }}">
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary px-4">Gửi</button>
+                                <button type="submit" class="btn btn-primary px-4">Cập Nhật</button>
                                 <a href="{{ route('posts.index') }}"  class="btn btn-primary px-4">Hủy</a>
                                 
                             </div>

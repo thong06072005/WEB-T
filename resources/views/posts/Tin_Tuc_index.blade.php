@@ -87,7 +87,8 @@
                             <td>{{ $tintuc->tieu_de }}</td>
                             <td>{{ $tintuc->noi_dung }}</td>
                             <td>{{ $tintuc->hinh_anh }}</td>
-                            <td> <button type="submit" class="btn btn-primary">Sửa</button>
+                            <td>
+                                <a href="{{ route('posts.edit' ,['ma_tin_tuc' => $tintuc->ma_tin_tuc]) }}" class="btn btn-primary">Sửa</button></a>
                                 <button type="submit" class="btn btn-primary">Xóa</button>
                             </td>
 
