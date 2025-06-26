@@ -80,42 +80,42 @@
             <!-- form gửi ý kiến cho cửa hàng -->
 
             @if(session('success'))
-             <div class="container mt-3">
-             <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-             </div>
-@endif
+            <div class="container mt-3">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+            @endif
             <form action="{{ route('store') }}" method="post" enctype="multipart/form-data">
-                    @csrf
+                @csrf
                 <div class="container bg-light my-5 p-4" id="T-contact-form">
                     <h2 class="text-center">Gửi Ý Kiến Cho Cửa Hàng</h2>
-                   <div class="mb-3">
-                    <label class="form-label fw-semibold">Họ Và Tên</label>
-                    <input type="text" class="form-control" name="fullname" placeholder="Tên của bạn" value="{{ old('fullname') }}">
-                    @error('fullname')
-                    <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                    <div id="error-fullname" class="text-danger"></div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Họ Và Tên</label>
+                        <input type="text" class="form-control" name="fullname" placeholder="Tên của bạn" value="{{ old('fullname') }}">
+                        @error('fullname')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                        <div id="error-fullname" class="text-danger"></div>
                     </div>
 
                     <div class="mb-3">
-                    <label class="form-label fw-semibold">Địa Chỉ Email</label>
-                    <input type="email" class="form-control" name="email" placeholder="name@example.com" value="{{ old('email') }}">
-                    @error('email')
-                    <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                    <div id="error-email" class="text-danger"></div>
+                        <label class="form-label fw-semibold">Địa Chỉ Email</label>
+                        <input type="email" class="form-control" name="email" placeholder="name@example.com" value="{{ old('email') }}">
+                        @error('email')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                        <div id="error-email" class="text-danger"></div>
                     </div>
 
                     <div class="mb-3">
-                    <label class="form-label fw-semibold">Nội Dung Góp Ý</label>
-                    <textarea class="form-control" name="feedback" rows="3" placeholder="Tôi Yêu Balo Vui Vẻ" ></textarea>
-                    @error('feedback')
-                    <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                    <div id="error-feedback" class="text-danger"></div>
+                        <label class="form-label fw-semibold">Nội Dung Góp Ý</label>
+                        <textarea class="form-control" name="feedback" rows="3" placeholder="Tôi Yêu Balo Vui Vẻ"></textarea>
+                        @error('feedback')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                        <div id="error-feedback" class="text-danger"></div>
                     </div>
 
                     <div class="col-12 text-center">
@@ -138,6 +138,9 @@
             <!-- bản đồ tới cửa hàng -->
 
         </main>
+
+
+
         <footer class="row bg-dark text-light pt-3">
             <!-- footer_main_menu -->
             <div class="footer_main_menu col-12">
