@@ -74,6 +74,5 @@ class Tin_Tuc_Controller extends Controller
     {
         DB::table('tin_tuc')->where('ma_tin_tuc', $ma_tin_tuc)->delete();
         return back()->with('message', 'Delete post successfully');
-       
     }
 }
