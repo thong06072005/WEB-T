@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tin Tức - BaloVuiVe</title>
+    <title>Tin Tức - List</title>
     <link rel="icon" href="{{ asset('image/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -82,24 +82,30 @@
                         </thead>
                         <tbody>
                             @forelse($tintuc as $tintuc)
-
-                            <td>{{ $tintuc->ma_tin_tuc }}</td>
-                            <td>{{ $tintuc->tieu_de }}</td>
-                            <td>{{ $tintuc->noi_dung }}</td>
-                            <td>{{ $tintuc->hinh_anh }}</td>
-                            <td>
-                                <a href="{{ route('posts.edit' ,['ma_tin_tuc' => $tintuc->ma_tin_tuc]) }}" class="btn btn-primary">Sửa</button></a>
-                                <button type="submit" class="btn btn-primary">Xóa</button>
-                            </td>
-
+                            <tr>
+                                <td>{{ $tintuc->ma_tin_tuc }}</td>
+                                <td>{{ $tintuc->tieu_de }}</td>
+                                <td class="noi_dung" title="{{ $tintuc->noi_dung }}">{{ $tintuc->noi_dung }}</td>
+                                <td>
+                                    <img src="{{ asset('image/' . $tintuc->hinh_anh) }}" alt="Ảnh tin tức" width="100">
+                                </td>
+                                <td class="hanh_dong">
+                                    <a href="{{ route('posts.edit', ['ma_tin_tuc' => $tintuc->ma_tin_tuc]) }}" class="btn btn-primary mb-1">Sửa</a>
+                                    <form style="display:inline;">
+                                        @csrf
+                                     
+                                        <button type="submit" class="btn btn-danger">Xóa</button>
+                                    </form>
+                                </td>
                             </tr>
-
                             @empty
                             <tr>
-                                <td colspan="4" class="text-center">Hiện không có danh sách bài viết nào</td>
+                                <td colspan="5" class="text-center">Hiện không có danh sách bài viết nào</td>
                             </tr>
                             @endforelse
                         </tbody>
+
+
                     </table>
                 </div>
             </div>

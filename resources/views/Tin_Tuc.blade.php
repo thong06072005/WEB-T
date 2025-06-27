@@ -197,7 +197,24 @@
 
             </div>
             <!-- hàng 3 trang tin tức -->
-
+            <div class="container mt-4">
+                <div class="row">
+                    @forelse($tintuc as $item)
+                    <div class="col-md-6 col-12 d-flex justify-content-center pt-4">
+                        <div class="card T-sp">
+                            <img src="{{ asset('image/' . $item->hinh_anh) }}" class="card-img-top w-100" alt="Ảnh tin tức">
+                            <div class="card-body">
+                                <h2 class="card-title">{{ $item->tieu_de }}</h2>
+                                <p class="card-text card-text2">{{ $item->noi_dung }}</p>
+                                <a href="San_Pham.php" class="btn btn-dark">Xem Thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                    @empty
+                    <p class="text-center">Chưa có bài viết nào</p>
+                    @endforelse
+                </div>
+            </div>
         </main>
         <footer class="row bg-dark text-light pt-3">
             <!-- footer_main_menu -->
@@ -243,16 +260,16 @@
                         <ul class="social_icon list-unstyled d-flex flex-row justify-content-around">
                             <li>
                                 <a href="https://www.facebook.com/dathis.dathat"><i class="fa-brands fa-facebook fs-4"></i></a>
-                              </li>
-                              <li>
+                            </li>
+                            <li>
                                 <a href="https://www.facebook.com/tuanthong.ma.7"><i class="fa-brands fa-instagram fs-4"></i></a>
-                              </li>
-                              <li>
+                            </li>
+                            <li>
                                 <a href="https://www.facebook.com/nguyenloc.2384"><i class="fa-brands fa-tiktok fs-4"></i></a>
-                              </li>
-                              <li>
+                            </li>
+                            <li>
                                 <a href="https://www.facebook.com/hung.tranvi.33"><i class="fa-brands fa-twitter fs-4"></i></a>
-                              </li>
+                            </li>
                         </ul>
                     </div>
                 </div>

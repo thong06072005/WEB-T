@@ -10,8 +10,7 @@ class Tin_Tuc_Controller extends Controller
 {
     public function index()
     {
-        $tintuc = DB::table('tin_tuc')->get();
-
+        $tintuc = DB::table('tin_tuc')->orderByDesc('ma_tin_tuc')->get();
         return view('posts.Tin_Tuc_index', compact('tintuc'));
     }
 
@@ -22,42 +21,52 @@ class Tin_Tuc_Controller extends Controller
 
     public function store(StorePostRequest $request)
     {
-        $path = $request->file('image')->store('image', 'public');
+        // Lưu ảnh vào thư mục public/image
+        $image = $request->file('image');
+        $imageName = time() . '_' . $image->getClientOriginalName();
+        $image->move(public_path('image'), $imageName);
 
-        db::table('tin_tuc')->insert([
+        // Lưu thông tin vào DB
+        DB::table('tin_tuc')->insert([
             'tieu_de' => $request->get('title'),
             'noi_dung' => $request->get('content'),
-            'hinh_anh' =>  $path
+            'hinh_anh' => $imageName
         ]);
-        return redirect()->route('posts.index')->with('success', 'Create Post SuccessFully');
+
+        return redirect()->route('posts.index')->with('success', 'Gửi bài viết thành công!');
     }
 
 
-    public function edit($ma_tin_tuc){
+
+    public function edit($ma_tin_tuc)
+    {
         $post = DB::table('tin_tuc')->where('ma_tin_tuc', $ma_tin_tuc)->first();
-        if(!$post){
+        if (!$post) {
             abort(404);
+        }
+        return view('posts.edit', compact('post'));
     }
-           return view('posts.edit', compact('post'));
-}
 
 
-    public function update(StorePostRequest $request, $ma_tin_tuc){
-                 $post = DB::table('tin_tuc')->where('ma_tin_tuc', $ma_tin_tuc)->first();
+    public function update(StorePostRequest $request, $ma_tin_tuc)
+    {
+        $post = DB::table('tin_tuc')->where('ma_tin_tuc', $ma_tin_tuc)->first();
 
-                // Nếu người dùng upload hình ảnh mới
-                if ($request->hasFile('image')) {
-               $path = $request->file('image')->store('image', 'public');
-                  } else {
-                   // Không upload hình mới => giữ ảnh cũ
-                  $path = $post->hinh_anh;
-                 }
+        // Nếu người dùng upload hình ảnh mới
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('image'), $imageName);
+            $path = $imageName;
+        } else {
+            $path = $post->hinh_anh;
+        }
         DB::table('tin_tuc')->where('ma_tin_tuc', $ma_tin_tuc)->update([
             'tieu_de' => $request->get('title'),
-            'noi_dung'=> $request->get('content'),
-            'hinh_anh'=> $path
+            'noi_dung' => $request->get('content'),
+            'hinh_anh' => $path
 
         ]);
-        return redirect()->route('posts.index')->with('message','Edit post successfully');
+        return redirect()->route('posts.index')->with('message', 'Edit post successfully');
     }
 }
