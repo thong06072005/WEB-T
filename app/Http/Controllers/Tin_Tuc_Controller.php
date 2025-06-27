@@ -69,4 +69,11 @@ class Tin_Tuc_Controller extends Controller
         ]);
         return redirect()->route('posts.index')->with('message', 'Edit post successfully');
     }
+
+    public function destroy($ma_tin_tuc)
+    {
+        DB::table('tin_tuc')->where('ma_tin_tuc', $ma_tin_tuc)->delete();
+        return back()->with('message', 'Delete post successfully');
+       
+    }
 }

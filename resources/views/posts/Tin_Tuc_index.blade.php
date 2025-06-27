@@ -90,11 +90,11 @@
                                     <img src="{{ asset('image/' . $tintuc->hinh_anh) }}" alt="Ảnh tin tức" width="100">
                                 </td>
                                 <td class="hanh_dong">
-                                    <a href="{{ route('posts.edit', ['ma_tin_tuc' => $tintuc->ma_tin_tuc]) }}" class="btn btn-primary mb-1">Sửa</a>
                                     <form style="display:inline;">
                                         @csrf
-                                     
-                                        <button type="submit" class="btn btn-danger">Xóa</button>
+                                        <a href="{{ route('posts.edit', parameters: ['ma_tin_tuc' => $tintuc->ma_tin_tuc]) }}" class="btn btn-primary mb-1">Sửa</a>
+
+                                        <a href="{{ route('posts.destroy', parameters: ['ma_tin_tuc' => $tintuc->ma_tin_tuc]) }}" class="btn btn-danger">Xóa</a>
                                     </form>
                                 </td>
                             </tr>

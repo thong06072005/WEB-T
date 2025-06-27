@@ -20,6 +20,8 @@ Route::prefix('posts')->controller(Tin_Tuc_Controller::class)->name('posts.')->g
     Route::get('/index', 'index')->name('index');
     Route::get('/create', 'create')->name('create');
     Route::post('/store', 'store')->name('store');
+    Route::get('/destroy/{ma_tin_tuc}', 'destroy')->name('destroy');
     Route::get('/{ma_tin_tuc}', 'edit')->name('edit');
     Route::put('/{ma_tin_tuc}', 'update')->name('update');
+    
 });

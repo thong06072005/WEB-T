@@ -89,10 +89,10 @@
 
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary px-4">Cập Nhật</button>
-                                <a href="{{ route('posts.index') }}"  class="btn btn-primary px-4">Hủy</a>
-                                
+                                <a href="{{ route('posts.index') }}" class="btn btn-primary px-4">Hủy</a>
+
                             </div>
-                           
+
                         </form>
                     </div>
                 </div>
