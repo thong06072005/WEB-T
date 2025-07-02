@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Post - Tin Tức</title>
+    <title>Tin Tức - Edit</title>
     <link rel="icon" href="{{ asset('image/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -68,27 +68,44 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8">
                     <div class="bg-white p-4 rounded shadow">
-                        <h3 class="mb-4 text-center text-primary">Gửi Bài Viết Mới</h3>
-                        <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+                        <h3 class="mb-4 text-center text-primary">Sửa Bài Viết</h3>
+                        <form method="POST" action="{{ route('vouchers.update', ['ma_giam_gia' => $vouchers->ma_giam_gia]) }}" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="_method" value="PUT">
+
                             <div class="mb-3">
-                                <label for="title" class="form-label fw-semibold">Tiêu Đề</label>
-                                <input type="text" class="form-control" id="title" name="title" placeholder="Nhập tiêu đề tin tức...">
+                                <label for="title" class="form-label fw-semibold">Mã Giảm Giá</label>
+                                <input type="text" class="form-control" name="ma_giam_gia" value="{{ $vouchers->ma_giam_gia }}">
                             </div>
 
                             <div class="mb-3">
-                                <label for="content" class="form-label fw-semibold">Nội Dung</label>
-                                <textarea class="form-control" id="content" name="content" rows="5" placeholder="Nhập nội dung chi tiết..."></textarea>
+                                <label for="title" class="form-label fw-semibold">Phương Thức Giảm Giá</label>
+                                <input type="text"class="form-control" name="phuong_thuc" value="{{ $vouchers->phuong_thuc }}">
                             </div>
 
                             <div class="mb-3">
-                                <label for="image" class="form-label fw-semibold">Hình Ảnh</label>
-                                <input type="file" class="form-control" id="image" name="image">
+                                <label for="title" class="form-label fw-semibold">Giá Trị Giảm</label>
+                                <input type="number"class="form-control" name="gia_tri" value="{{ $vouchers->gia_tri }}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="title" class="form-label fw-semibold">Ngày Hiệu Lực</label>
+                                <input type="date"class="form-control" name="ngay_hieu_luc" value="{{ \Carbon\Carbon::parse($vouchers->ngay_hieu_luc)->format('Y-m-d') }}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="title" class="form-label fw-semibold">Ngày Hết Hạn</label>
+                                <input type="date"class="form-control" name="ngay_het_han" value="{{ \Carbon\Carbon::parse($vouchers->ngay_het_han)->format('Y-m-d') }}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="title" class="form-label fw-semibold">Bậc Thành Viên Áp Dụng</label>
+                                <input type="number" class="form-control"name="bac_thanh_vien_ap_dung" value="{{ $vouchers->bac_thanh_vien_ap_dung }}">
                             </div>
 
                             <div class="text-center">
-                                <a href="{{ route('posts.index') }}" class="btn btn-primary px-4">Xác Nhận</a>
-                                 <a href="{{ route('posts.index') }}" class="btn btn-primary px-4">Hủy</a>
+                                <button type="submit" class="btn btn-primary px-4">Cập Nhật</button>
+                                <a href="{{ route('vouchers.index') }}" class="btn btn-primary px-4">Hủy</a>
 
                             </div>
 

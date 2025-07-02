@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Post - Tin Tức</title>
+    <title>Tin Tức - List</title>
     <link rel="icon" href="{{ asset('image/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -64,36 +64,47 @@
             </nav>
         </header>
 
-        <main class="container my-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-6 col-md-8">
-                    <div class="bg-white p-4 rounded shadow">
-                        <h3 class="mb-4 text-center text-primary">Gửi Bài Viết Mới</h3>
-                        <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="title" class="form-label fw-semibold">Tiêu Đề</label>
-                                <input type="text" class="form-control" id="title" name="title" placeholder="Nhập tiêu đề tin tức...">
-                            </div>
+        <main>
+            <div class="container my-5">
+                <h2 class="text-center mb-4">Danh sách tin tức </h2>
 
-                            <div class="mb-3">
-                                <label for="content" class="form-label fw-semibold">Nội Dung</label>
-                                <textarea class="form-control" id="content" name="content" rows="5" placeholder="Nhập nội dung chi tiết..."></textarea>
-                            </div>
+                <div class="table-responsive shadow rounded">
+                    <table class="table table-bordered table-striped table-hover text-center align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Mã Giảm Giá </th>
+                                <th scope="col">Phương Thức</th>
+                                <th scope="col">Giá Trị</th>
+                                <th scope="col">Ngày Hiệu Lực</th>
+                                <th scope="col">Ngày Hết Hạn</th>
+                                <th scope="col">Bậc Thành Viên Áp Dụng</th>
+                                <th></th>
 
-                            <div class="mb-3">
-                                <label for="image" class="form-label fw-semibold">Hình Ảnh</label>
-                                <input type="file" class="form-control" id="image" name="image">
-                            </div>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($vouchers as $voucher)
+                            <tr>
+                                <td>{{ $voucher->ma_giam_gia }}</td>
+                                <td>{{ $voucher->phuong_thuc }}</td>
+                                <td>{{ $voucher->gia_tri }}</td>
+                                <td>{{ $voucher->ngay_hieu_luc }}</td>
+                                <td>{{ $voucher->ngay_het_han }}</td>
+                                <td>{{ $voucher->bac_thanh_vien_ap_dung }}</td>
+                                <td>
+                                    <a href="{{ route('vouchers.edit', $voucher->ma_giam_gia) }}" class="btn btn-warning btn-sm">Sửa</a>
+                                    <form action="{{ route('vouchers.destroy', $voucher->ma_giam_gia) }}" method="POST" style="display:inline-block;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
 
-                            <div class="text-center">
-                                <a href="{{ route('posts.index') }}" class="btn btn-primary px-4">Xác Nhận</a>
-                                 <a href="{{ route('posts.index') }}" class="btn btn-primary px-4">Hủy</a>
 
-                            </div>
-
-                        </form>
-                    </div>
+                    </table>
                 </div>
             </div>
         </main>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Post - Tin Tức</title>
+    <title>Tạo Mã Giảm Giá</title>
     <link rel="icon" href="{{ asset('image/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -15,81 +15,46 @@
 
 <body>
     <div class="container-fluid">
-        <!-- promo_banner -->
-        <div class="promo_banner col-12 d-flex align-items-center justify-content-center promo_height overflow-hidden">
-            <p class="promo_content m-0 fade show">Ưu đãi đặc biệt - Giảm giá 20% tất cả sản phẩm!</p>
-            <p class="promo_content m-0 fade d-none">Mua ngay để nhận quà tặng hấp dẫn!</p>
-            <p class="promo_content m-0 fade d-none">Freeship toàn quốc cho đơn hàng từ 500K!</p>
-            <p class="promo_content m-0 fade d-none">Đăng ký thành viên để nhận nhiều ưu đãi!</p>
-        </div>
-        <!-- header -->
-        <header class="row sticky-top">
-            <!-- navigation -->
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="Trang_Chu.php"><img src="{{ asset('image/logo.png') }}" alt="logo" width="90px"></a>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-5 fw-semibold">
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="Trang_Chu.php">TRANG CHỦ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="San_Pham.php">SẢN PHẨM</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="Lien_he.php">LIÊN HỆ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="Tin_Tuc.php">TIN TỨC</a>
-                            </li>
-                        </ul>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success search-btn" type="submit">Search</button>
-                        </form>
-                    </div>
-                    <div>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <a href="Gio_Hang.php" class="icon mx-2 fs-2" id="shopping_cart"><i
-                                class="fa-solid fa-cart-shopping position-relative">
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-flex align-items-center justify-content-center">34</span>
-                            </i></a>
-                        <a href="Dang_Nhap.php" class="icon mx-2 fs-2" id="login"><i class="fa-solid fa-user"></i></a>
-                    </div>
-                </div>
-            </nav>
-        </header>
-
         <main class="container my-5">
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8">
                     <div class="bg-white p-4 rounded shadow">
-                        <h3 class="mb-4 text-center text-primary">Gửi Bài Viết Mới</h3>
-                        <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+                        <h3 class="mb-4 text-center text-primary">Tạo Mã Giảm Giá</h3>
+                        <form method="POST" action="{{ route('vouchers.store') }}">
                             @csrf
                             <div class="mb-3">
-                                <label for="title" class="form-label fw-semibold">Tiêu Đề</label>
-                                <input type="text" class="form-control" id="title" name="title" placeholder="Nhập tiêu đề tin tức...">
+                                <label for="ma_giam_gia" class="form-label fw-semibold">Mã Giảm Giá</label>
+                                <input type="text" class="form-control" id="ma_giam_gia" name="ma_giam_gia" placeholder="V123">
                             </div>
 
                             <div class="mb-3">
-                                <label for="content" class="form-label fw-semibold">Nội Dung</label>
-                                <textarea class="form-control" id="content" name="content" rows="5" placeholder="Nhập nội dung chi tiết..."></textarea>
+                                <label for="phuong_thuc" class="form-label fw-semibold">Phương Thức Giảm Giá</label>
+                                <input type="text" class="form-control" id="phuong_thuc" name="phuong_thuc" placeholder="Giảm Trực Tiếp Vào Hóa Đơn">
                             </div>
 
                             <div class="mb-3">
-                                <label for="image" class="form-label fw-semibold">Hình Ảnh</label>
-                                <input type="file" class="form-control" id="image" name="image">
+                                <label for="gia_tri" class="form-label fw-semibold">Giá Trị Giảm</label>
+                                <input type="number" class="form-control" id="gia_tri" name="gia_tri" placeholder="30">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="ngay_hieu_luc" class="form-label fw-semibold">Ngày Hiệu Lực</label>
+                                <input type="date" class="form-control" id="ngay_hieu_luc" name="ngay_hieu_luc">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="ngay_het_han" class="form-label fw-semibold">Ngày Hết Hạn</label>
+                                <input type="date" class="form-control" id="ngay_het_han" name="ngay_het_han">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="bac_thanh_vien_ap_dung" class="form-label fw-semibold">Bậc Thành Viên Áp Dụng</label>
+                                <input type="number" class="form-control" id="bac_thanh_vien_ap_dung" name="bac_thanh_vien_ap_dung">
                             </div>
 
                             <div class="text-center">
-                                <a href="{{ route('posts.index') }}" class="btn btn-primary px-4">Xác Nhận</a>
-                                 <a href="{{ route('posts.index') }}" class="btn btn-primary px-4">Hủy</a>
-
+                                <button type="submit" class="btn btn-primary px-4">Xác Nhận</button>
+                                <a href="{{ route('posts.index') }}" class="btn btn-secondary px-4">Hủy</a>
                             </div>
 
                         </form>
