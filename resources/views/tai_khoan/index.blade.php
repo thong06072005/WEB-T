@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liên Hệ - List</title>
+    <title>Liên Hệ - BaloVuiVe</title>
     <link rel="icon" href="{{ asset('image/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -64,45 +64,61 @@
             </nav>
         </header>
 
-        <main>
-            <div class="container my-5">
-                <h2 class="text-center mb-4">Danh sách thông tin góp ý</h2>
+        <body>
+            <div class="container-fluid">
 
-                <div class="table-responsive shadow rounded">
-                    <table class="table table-bordered table-striped table-hover text-center align-middle">
-                        <thead class="table-dark">
+
+                <div class="container my-5">
+                    <h3>Danh sách {{ $vaitro == 'khach_hang' ? 'Khách hàng' : 'Nhân viên' }}</h3>
+
+                    @if(session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
+
+                    <table class="table table-bordered mt-3">
+                        <thead class="table-secondary">
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Họ và Tên</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Nội dung góp ý</th>
+                                <th>Mã</th>
+                                <th>Tên đăng nhập</th>
+                                <th>Vai trò</th>
+                                <th>Trạng thái</th>
+                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($thongtin as $thongtin)
-
-                            <td>{{ $thongtin->id }}</td>
-                            <td>{{ $thongtin->fullname }}</td>
-                            <td>{{ $thongtin->email }}</td>
-                            <td>{{ $thongtin->NoiDungGopY }}</td>
-
-                            </tr>
-
-                            @empty
+                            @foreach($taiKhoans as $tk)
                             <tr>
-                                <td colspan="4" class="text-center">Hiện không có danh sách góp ý nào</td>
+                                <td>{{ $tk->ma_tai_khoan }}</td>
+                                <td>{{ $tk->ten_dang_nhap }}</td>
+                                <td>
+                                    <form action="{{ route('tai_khoan.update', $tk->ma_tai_khoan) }}" method="POST">
+                                        @csrf
+                                        <select name="vai_tro" class="form-select" onchange="this.form.submit()">
+                                            <option value="khach_hang" {{ $tk->vai_tro == 'khach_hang' ? 'selected' : '' }}>Khách hàng</option>
+                                            <option value="nhan_vien" {{ $tk->vai_tro == 'nhan_vien' ? 'selected' : '' }}>Nhân viên</option>
+                                            <option value="admin" {{ $tk->vai_tro == 'admin' ? 'selected' : '' }}>Admin</option>
+                                        </select>
+                                    </form>
+                                </td>
+                                <td>{{ $tk->trang_thai ? 'Hoạt động' : 'Khóa' }}</td>
+                                <td>
+                                    <a href="{{ route('tai_khoan.show', $tk->ma_tai_khoan) }}" class="btn btn-info btn-sm">Chi tiết</a>
+                                    <form action="{{ route('tai_khoan.destroy', $tk->ma_tai_khoan) }}" method="POST" style="display:inline-block" onsubmit="return confirm('Bạn có chắc muốn xóa tài khoản này?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-sm">Xóa</button>
+                                    </form>
+                                </td>
                             </tr>
-                            @endforelse
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
+
+
+
             </div>
-        </main>
-
-
-
-
-
+        </body>
         <footer class="row bg-dark text-light pt-3">
             <!-- footer_main_menu -->
             <div class="footer_main_menu col-12">

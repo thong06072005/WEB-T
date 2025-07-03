@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InforController;
 use App\Http\Controllers\Lien_He_Controller;
 use App\Http\Controllers\VoucherController;
 use Illuminate\Support\Facades\Route;
@@ -35,3 +36,11 @@ Route::prefix('vouchers')->name('vouchers.')->controller(VoucherController::clas
     Route::put('/{ma_giam_gia}', 'update')->name('update');
     Route::delete('/{ma_giam_gia}', 'destroy')->name('destroy');
 });
+
+use App\Http\Controllers\TaiKhoanController;
+
+Route::get('/tai-khoan', [TaiKhoanController::class, 'chonLoai'])->name('tai_khoan.chon');
+Route::get('/tai-khoan/{loai}', [TaiKhoanController::class, 'index'])->name('tai_khoan.index');
+Route::get('/tai-khoan/chi-tiet/{ma_tai_khoan}', [TaiKhoanController::class, 'show'])->name('tai_khoan.show');
+Route::post('/tai-khoan/update-vai-tro/{ma_tai_khoan}', [TaiKhoanController::class, 'updateVaiTro'])->name('tai_khoan.update');
+Route::delete('/tai-khoan/xoa/{ma_tai_khoan}', [TaiKhoanController::class, 'destroy'])->name('tai_khoan.destroy');

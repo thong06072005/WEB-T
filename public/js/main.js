@@ -313,4 +313,4 @@ function validatePassword() {
 function selectBac(value, label) {
         document.getElementById('bac_thanh_vien_ap_dung').value = value;
         document.getElementById('selectedBac').innerText = 'Đã chọn: ' + label;
-    }
+  }

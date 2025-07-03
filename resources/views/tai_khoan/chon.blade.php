@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liên Hệ - List</title>
+    <title>Liên Hệ - BaloVuiVe</title>
     <link rel="icon" href="{{ asset('image/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -64,45 +64,17 @@
             </nav>
         </header>
 
-        <main>
-            <div class="container my-5">
-                <h2 class="text-center mb-4">Danh sách thông tin góp ý</h2>
+        <body>
+            <main>
 
-                <div class="table-responsive shadow rounded">
-                    <table class="table table-bordered table-striped table-hover text-center align-middle">
-                        <thead class="table-dark">
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Họ và Tên</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Nội dung góp ý</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($thongtin as $thongtin)
-
-                            <td>{{ $thongtin->id }}</td>
-                            <td>{{ $thongtin->fullname }}</td>
-                            <td>{{ $thongtin->email }}</td>
-                            <td>{{ $thongtin->NoiDungGopY }}</td>
-
-                            </tr>
-
-                            @empty
-                            <tr>
-                                <td colspan="4" class="text-center">Hiện không có danh sách góp ý nào</td>
-                            </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                {{-- CONTENT --}}
+                <div class="container text-center my-5">
+                    <h2>Chọn loại tài khoản</h2>
+                    <a href="{{ route('tai_khoan.index', 'khach-hang') }}" class="btn btn-primary m-2">Thông Tin Khách Hàng</a>
+                    <a href="{{ route('tai_khoan.index', 'nhan-vien') }}" class="btn btn-success m-2">Thông Tin Nhân Viên</a>
                 </div>
-            </div>
-        </main>
-
-
-
-
-
+            </main>
+        </body>
         <footer class="row bg-dark text-light pt-3">
             <!-- footer_main_menu -->
             <div class="footer_main_menu col-12">
