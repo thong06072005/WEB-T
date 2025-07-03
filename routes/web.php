@@ -44,3 +44,7 @@ Route::get('/tai-khoan/{loai}', [TaiKhoanController::class, 'index'])->name('tai
 Route::get('/tai-khoan/chi-tiet/{ma_tai_khoan}', [TaiKhoanController::class, 'show'])->name('tai_khoan.show');
 Route::post('/tai-khoan/update-vai-tro/{ma_tai_khoan}', [TaiKhoanController::class, 'updateVaiTro'])->name('tai_khoan.update');
 Route::delete('/tai-khoan/xoa/{ma_tai_khoan}', [TaiKhoanController::class, 'destroy'])->name('tai_khoan.destroy');
+
+use App\Http\Controllers\ThongKeController;
+
+Route::get('/thong-ke', [ThongKeController::class, 'index'])->name('thongke.index');

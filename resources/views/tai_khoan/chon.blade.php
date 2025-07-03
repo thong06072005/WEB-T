@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liên Hệ - BaloVuiVe</title>
+    <title>Quản Lý Tài Khoản - BaloVuiVe</title>
     <link rel="icon" href="{{ asset('image/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -112,7 +112,7 @@
             </div>
             <!-- social -->
             <div class="social col-12 d-flex justify-content-around mt-3">
-                <img src="./image/logo_bo_cong_thuong.png" alt="lỗi hình ảnh" height="60px">
+                <img src={{ asset("./image/logo_bo_cong_thuong.png") }} alt="lỗi hình ảnh" height="60px">
                 <div class="social">
                     <div class="title">Đồng hành cùng chúng tôi</div>
                     <div class="social_link">

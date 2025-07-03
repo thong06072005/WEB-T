@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi Tiết Tài Khoản - BaloVuiVe</title>
+    <title>Thống kê doanh thu - BaloVuiVe</title>
     <link rel="icon" href="{{ asset('image/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -64,31 +64,89 @@
             </nav>
         </header>
 
+        <main>
 
-        <body>
-            <div class="container-fluid">
+            <div class="container my-5">
+                <h2 class="mb-4">Thống kê doanh thu ( {{ ucfirst($loai) }} )</h2>
 
-                <div class="container my-5">
-                    <h3>Thông tin chi tiết</h3>
-                    @if ($thongTin)
-                    <ul class="list-group mt-3">
-                        <li class="list-group-item"><strong>Họ tên:</strong> {{ $thongTin->ho_ten }}</li>
-                        <li class="list-group-item"><strong>Địa chỉ:</strong> {{ $thongTin->dia_chi ?? 'Không có' }}</li>
-                        <li class="list-group-item"><strong>Số điện thoại:</strong> {{ $thongTin->sdt ?? 'Không có' }}</li>
-                        <li class="list-group-item"><strong>Email:</strong> {{ $thongTin->email ?? 'Không có' }}</li>
-                        <li class="list-group-item"><strong>Cấp bậc thành viên:</strong> {{ $thongTin->cap_bac_thanh_vien }}</li>
-                    </ul>
-                    @else
-                    <div class="alert alert-warning mt-3">Không có thông tin chi tiết.</div>
+                <form method="GET" class="mb-3">
+                    <label for="loai">Chọn loại thống kê:</label>
+                    <select name="loai" id="loai" onchange="this.form.submit()" class="form-select w-auto d-inline-block ms-2">
+                        <option value="ngay" {{ $loai == 'ngay' ? 'selected' : '' }}>Ngày</option>
+                        <option value="tuan" {{ $loai == 'tuan' ? 'selected' : '' }}>Tuần</option>
+                        <option value="thang" {{ $loai == 'thang' ? 'selected' : '' }}>Tháng</option>
+                        <option value="nam" {{ $loai == 'nam' ? 'selected' : '' }}>Năm</option>
+                    </select>
+
+                    {{-- Ngày --}}
+                    @if($loai == 'ngay')
+                    <label for="ngay" class="ms-3">Ngày:</label>
+                    <input type="date" name="ngay" id="ngay" value="{{ $ngay }}" onchange="this.form.submit()" class="form-control d-inline-block w-auto">
                     @endif
 
-                    <a href="{{ url()->previous() }}" class="btn btn-secondary mt-3">Quay lại</a>
+                    {{-- Tuần --}}
+                    @if($loai == 'tuan')
+                    <label for="from_date" class="ms-3">Từ ngày:</label>
+                    <input type="date" name="from_date" id="from_date" value="{{ request('from_date', \Carbon\Carbon::now()->startOfWeek()->toDateString()) }}"
+                        onchange="this.form.submit()" class="form-control d-inline-block w-auto">
+
+                    <label for="to_date" class="ms-3">Đến ngày:</label>
+                    <input type="date" name="to_date" id="to_date" value="{{ request('to_date', \Carbon\Carbon::now()->endOfWeek()->toDateString()) }}"
+                        onchange="this.form.submit()" class="form-control d-inline-block w-auto">
+                    @endif
+
+                    {{-- Tháng --}}
+                    @if($loai == 'thang')
+                    <label for="thang" class="ms-3">Tháng:</label>
+                    <select name="thang" id="thang" onchange="this.form.submit()" class="form-select w-auto d-inline-block">
+                        @for($i = 1; $i <= 12; $i++)
+                            <option value="{{ $i }}" {{ $thang == $i ? 'selected' : '' }}>Tháng {{ $i }}</option>
+                            @endfor
+                    </select>
+                    <label for="nam" class="ms-2">Năm:</label>
+                    <select name="nam" id="nam" onchange="this.form.submit()" class="form-select w-auto d-inline-block">
+                        @for($i = now()->year; $i >= now()->year - 5; $i--)
+                        <option value="{{ $i }}" {{ $nam == $i ? 'selected' : '' }}>{{ $i }}</option>
+                        @endfor
+                    </select>
+                    @endif
+
+                    {{-- Năm --}}
+                    @if($loai == 'nam')
+                    <label for="nam" class="ms-3">Năm:</label>
+                    <select name="nam" id="nam" onchange="this.form.submit()" class="form-select w-auto d-inline-block">
+                        @for($i = now()->year; $i >= now()->year - 5; $i--)
+                        <option value="{{ $i }}" {{ $nam == $i ? 'selected' : '' }}>{{ $i }}</option>
+                        @endfor
+                    </select>
+                    @endif
+                </form>
+
+
+                <div class="alert alert-success">
+                    <strong>Tổng doanh thu:</strong> {{ number_format($tong_doanh_thu, 0, ',', '.') }} VNĐ
                 </div>
 
-
+                <h5>Doanh thu theo danh mục:</h5>
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Danh mục</th>
+                            <th>Doanh thu (VNĐ)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($doanh_thu_danh_muc as $item)
+                        <tr>
+                            <td>{{ $item->ten_danh_muc }}</td>
+                            <td>{{ number_format($item->doanh_thu, 0, ',', '.') }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-        </body>
 
+        </main>
         <footer class="row bg-dark text-light pt-3">
             <!-- footer_main_menu -->
             <div class="footer_main_menu col-12">

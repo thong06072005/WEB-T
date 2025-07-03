@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tin Tức - List</title>
+    <title> Danh Sách Voucher</title>
     <link rel="icon" href="{{ asset('image/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -66,7 +66,7 @@
 
         <main>
             <div class="container my-5">
-                <h2 class="text-center mb-4">Danh sách tin tức </h2>
+                <h2 class="text-center mb-4"> Danh Sách Voucher </h2>
 
                 <div class="table-responsive shadow rounded">
                     <table class="table table-bordered table-striped table-hover text-center align-middle">
@@ -150,7 +150,7 @@
             </div>
             <!-- social -->
             <div class="social col-12 d-flex justify-content-around mt-3">
-                <img src="./image/logo_bo_cong_thuong.png" alt="lỗi hình ảnh" height="60px">
+                <img src={{ asset("./image/logo_bo_cong_thuong.png") }} alt="lỗi hình ảnh" height="60px">
                 <div class="social">
                     <div class="title">Đồng hành cùng chúng tôi</div>
                     <div class="social_link">

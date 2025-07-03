@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tin Tức - Edit</title>
+    <title>Voucher - Edit</title>
     <link rel="icon" href="{{ asset('image/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -68,7 +68,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8">
                     <div class="bg-white p-4 rounded shadow">
-                        <h3 class="mb-4 text-center text-primary">Sửa Bài Viết</h3>
+                        <h3 class="mb-4 text-center text-primary">Sửa Thông Tin Voucher</h3>
                         <form method="POST" action="{{ route('vouchers.update', ['ma_giam_gia' => $vouchers->ma_giam_gia]) }}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="_method" value="PUT">
@@ -80,27 +80,27 @@
 
                             <div class="mb-3">
                                 <label for="title" class="form-label fw-semibold">Phương Thức Giảm Giá</label>
-                                <input type="text"class="form-control" name="phuong_thuc" value="{{ $vouchers->phuong_thuc }}">
+                                <input type="text" class="form-control" name="phuong_thuc" value="{{ $vouchers->phuong_thuc }}">
                             </div>
 
                             <div class="mb-3">
                                 <label for="title" class="form-label fw-semibold">Giá Trị Giảm</label>
-                                <input type="number"class="form-control" name="gia_tri" value="{{ $vouchers->gia_tri }}">
+                                <input type="number" class="form-control" name="gia_tri" value="{{ $vouchers->gia_tri }}">
                             </div>
 
                             <div class="mb-3">
                                 <label for="title" class="form-label fw-semibold">Ngày Hiệu Lực</label>
-                                <input type="date"class="form-control" name="ngay_hieu_luc" value="{{ \Carbon\Carbon::parse($vouchers->ngay_hieu_luc)->format('Y-m-d') }}">
+                                <input type="date" class="form-control" name="ngay_hieu_luc" value="{{ \Carbon\Carbon::parse($vouchers->ngay_hieu_luc)->format('Y-m-d') }}">
                             </div>
 
                             <div class="mb-3">
                                 <label for="title" class="form-label fw-semibold">Ngày Hết Hạn</label>
-                                <input type="date"class="form-control" name="ngay_het_han" value="{{ \Carbon\Carbon::parse($vouchers->ngay_het_han)->format('Y-m-d') }}">
+                                <input type="date" class="form-control" name="ngay_het_han" value="{{ \Carbon\Carbon::parse($vouchers->ngay_het_han)->format('Y-m-d') }}">
                             </div>
 
                             <div class="mb-3">
                                 <label for="title" class="form-label fw-semibold">Bậc Thành Viên Áp Dụng</label>
-                                <input type="number" class="form-control"name="bac_thanh_vien_ap_dung" value="{{ $vouchers->bac_thanh_vien_ap_dung }}">
+                                <input type="number" class="form-control" name="bac_thanh_vien_ap_dung" value="{{ $vouchers->bac_thanh_vien_ap_dung }}">
                             </div>
 
                             <div class="text-center">
@@ -156,7 +156,7 @@
             </div>
             <!-- social -->
             <div class="social col-12 d-flex justify-content-around mt-3">
-                <img src="./image/logo_bo_cong_thuong.png" alt="lỗi hình ảnh" height="60px">
+                <img src={{ asset("./image/logo_bo_cong_thuong.png") }} alt="lỗi hình ảnh" height="60px">
                 <div class="social">
                     <div class="title">Đồng hành cùng chúng tôi</div>
                     <div class="social_link">
