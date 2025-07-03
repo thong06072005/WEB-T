@@ -15,6 +15,10 @@ class TaiKhoanController extends Controller
     public function index($loai)
     {
         $vaitro = $loai == 'khach-hang' ? 'khach_hang' : 'nhan_vien';
+        //Nếu $loai = 'khach-hang' thì $vaitro = 'khach_hang', 
+        //Nếu không thì gán mặc định là 'nhan_vien'
+        //Biến $vaitro chính là giá trị của cột vai_tro trong bảng tai_khoan
+
         $taiKhoans = DB::table('tai_khoan')
             ->where('vai_tro', $vaitro)
             ->get();
@@ -43,7 +47,7 @@ class TaiKhoanController extends Controller
     {
         $thongTin = DB::table('thong_tin_khach_hang')
             ->where('ma_tai_khoan', $ma_tai_khoan)
-            ->first();
+            ->first();//chỉ lấy 1 dòng đầu tiên 
 
         return view('tai_khoan.chi_tiet', compact('thongTin'));
     }

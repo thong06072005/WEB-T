@@ -96,7 +96,6 @@
                                         <select name="vai_tro" class="form-select" onchange="this.form.submit()">
                                             <option value="khach_hang" {{ $tk->vai_tro == 'khach_hang' ? 'selected' : '' }}>Khách hàng</option>
                                             <option value="nhan_vien" {{ $tk->vai_tro == 'nhan_vien' ? 'selected' : '' }}>Nhân viên</option>
-                                            <option value="admin" {{ $tk->vai_tro == 'admin' ? 'selected' : '' }}>Admin</option>
                                         </select>
                                     </form>
                                 </td>

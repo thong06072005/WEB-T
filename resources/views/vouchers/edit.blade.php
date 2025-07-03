@@ -91,6 +91,15 @@
                             <div class="mb-3">
                                 <label for="title" class="form-label fw-semibold">Ngày Hiệu Lực</label>
                                 <input type="date" class="form-control" name="ngay_hieu_luc" value="{{ \Carbon\Carbon::parse($vouchers->ngay_hieu_luc)->format('Y-m-d') }}">
+
+                                <!--  
+ 
+                            //Laravel thường lưu ngày ở định dạng datetime (ví dụ: 2025-07-03 00:00:00)
+                            Nhưng thẻ <input type="date"> chỉ chấp nhận định dạng: YYYY-MM-DD
+                            ⟶ Do đó cần Carbon::parse(...) để chuyển đổi đúng định dạng.
+                            
+                            -->
+
                             </div>
 
                             <div class="mb-3">

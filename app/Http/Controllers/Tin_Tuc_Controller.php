@@ -23,8 +23,8 @@ class Tin_Tuc_Controller extends Controller
     {
         // Lưu ảnh vào thư mục public/image
         $image = $request->file('image');
-        $imageName = time() . '_' . $image->getClientOriginalName();
-        $image->move(public_path('image'), $imageName);
+        $imageName = time() . '_' . $image->getClientOriginalName(); // đang đặt tên cho ảnh là thời gian tạo cùng đuôi image
+        $image->move(public_path('image'), $imageName); //lưu ảnh vào thư mục public 
 
         // Lưu thông tin vào DB
         DB::table('tin_tuc')->insert([

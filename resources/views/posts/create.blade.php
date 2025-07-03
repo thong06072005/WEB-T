@@ -64,6 +64,9 @@
             </nav>
         </header>
 
+
+
+
         <main class="container my-5">
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8">
@@ -87,8 +90,9 @@
                             </div>
 
                             <div class="text-center">
-                                <a href="{{ route('posts.index') }}" class="btn btn-primary px-4">Xác Nhận</a>
-                                 <a href="{{ route('posts.index') }}" class="btn btn-primary px-4">Hủy</a>
+
+                                <button type="submit" class="btn btn-primary px-4">Xác Nhận</button>
+                                <a href="{{ route('posts.index') }}" class="btn btn-primary px-4">Hủy</a>
 
                             </div>
 

@@ -11,7 +11,7 @@ class Lien_He_Controller extends Controller
     public function store(LienHeRequest $request)
     {
         DB::table('thong_tin_gop_y')->insert([
-            'fullname' => $request->fullname,
+            'fullname' => $request->fullname, //full name tức là gọi đúng tên cột trong data base, tương tự với các dòng ở dưới
             'email' => $request->email,
             'NoiDungGopY' => $request->feedback,
         ]);
@@ -19,7 +19,7 @@ class Lien_He_Controller extends Controller
     }
     public function index()
     {
-        $thongtin = DB::table('thong_tin_gop_y')->get();
-        return view('Lien_He_index', compact('thongtin'));
+        $thongtin = DB::table('thong_tin_gop_y')->get(); //Dùng querry builder để có thể lấy toàn bộ dữ liệu từ bảng 
+        return view('Lien_He_index', compact('thongtin')); //compact nghĩa là gửi biến thông tin ở trên sang cho view để dùng foreach
     }
 }
