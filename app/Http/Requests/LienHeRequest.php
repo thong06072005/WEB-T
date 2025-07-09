@@ -22,24 +22,21 @@ class LienHeRequest extends FormRequest
     public function rules(): array
     {
         return [
-          'fullname' => 'required|string|min:2',
-          'email'=> 'required|email',
-          'feedback'=> 'required|min:20',
+            'fullname' => 'required|string|min:2',
+            'email' => 'required|email',
+            'feedback' => 'required|min:20',
         ];
     }
 
-  public function messages()
-{
-    return [
-        'fullname.required' => 'Họ và tên không được để trống.',
-        'fullname.min' => 'Họ và tên phải có ít nhất 2 ký tự.',
-        
-        'email.required' => 'Vui lòng nhập đúng định dạng địa chỉ email.',
-        'email.email' => 'Địa chỉ email không hợp lệ.',
-
-        'feedback.required' => 'Vui lòng nhập nội dung góp ý.',
-        'feedback.min' => 'Nội dung góp ý phải có ít nhất 20 ký tự.',
-    ];
-}
-
+    public function messages()
+    {
+        return [
+            'fullname.required' => 'Họ và tên không được để trống.',
+            'fullname.min' => 'Họ và tên phải có ít nhất 2 ký tự.',
+            'email.required' => 'Email không được để trống.',
+            'email.email' => 'Địa chỉ email không hợp lệ.',
+            'feedback.required' => 'Nội dung góp ý không được để trống.',
+            'feedback.min' => 'Nội dung góp ý phải có ít nhất 20 ký tự.',
+        ];
+    }
 }

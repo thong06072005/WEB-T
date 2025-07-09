@@ -15,6 +15,55 @@
 
 <body>
     <div class="container-fluid">
+        <!-- promo_banner -->
+        <div class="promo_banner col-12 d-flex align-items-center justify-content-center promo_height overflow-hidden">
+            <p class="promo_content m-0 fade show">Ưu đãi đặc biệt - Giảm giá 20% tất cả sản phẩm!</p>
+            <p class="promo_content m-0 fade d-none">Mua ngay để nhận quà tặng hấp dẫn!</p>
+            <p class="promo_content m-0 fade d-none">Freeship toàn quốc cho đơn hàng từ 500K!</p>
+            <p class="promo_content m-0 fade d-none">Đăng ký thành viên để nhận nhiều ưu đãi!</p>
+        </div>
+        <!-- header -->
+        <header class="row sticky-top">
+            <!-- navigation -->
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="Trang_Chu.php"><img src="{{ asset('image/logo.png') }}" alt="logo" width="90px"></a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-5 fw-semibold">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="Trang_Chu.php">TRANG CHỦ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="San_Pham.php">SẢN PHẨM</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="Lien_he.php">LIÊN HỆ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="Tin_Tuc.php">TIN TỨC</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success search-btn" type="submit">Search</button>
+                        </form>
+                    </div>
+                    <div>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <a href="Gio_Hang.php" class="icon mx-2 fs-2" id="shopping_cart"><i
+                                class="fa-solid fa-cart-shopping position-relative">
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-flex align-items-center justify-content-center">34</span>
+                            </i></a>
+                        <a href="Dang_Nhap.php" class="icon mx-2 fs-2" id="login"><i class="fa-solid fa-user"></i></a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
         <main class="container my-5">
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8">

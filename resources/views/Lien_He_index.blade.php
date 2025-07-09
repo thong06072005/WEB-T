@@ -79,12 +79,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($thongtin as $thongtin)
+                            @forelse($thongtin as $item)
 
-                            <td>{{ $thongtin->id }}</td>
-                            <td>{{ $thongtin->fullname }}</td>
-                            <td>{{ $thongtin->email }}</td>
-                            <td>{{ $thongtin->NoiDungGopY }}</td>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->fullname }}</td>
+                            <td>{{ $item->email }}</td>
+                            <td>{{ $item->NoiDungGopY }}</td>
 
                             </tr>
 

@@ -1,38 +1,54 @@
 <?php
 
-use App\Http\Controllers\InforController;
-use App\Http\Controllers\Lien_He_Controller;
-use App\Http\Controllers\VoucherController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
+use App\Http\Controllers\InforController;
+use App\Http\Controllers\Lien_He_Controller;
 use App\Http\Controllers\Tin_Tuc_Controller;
+use App\Http\Controllers\VoucherController;
+use App\Http\Controllers\TaiKhoanController;
+use App\Http\Controllers\ThongKeController;
 
-//Chức năng và hiển thị của trang liên hệ
-Route::view('/Lien_He', 'Lien_He')->name('lienhe');
-Route::post('/store', [Lien_He_Controller::class, 'store'])->name('store');
-Route::get('/Lien_He_index', [Lien_He_Controller::class, 'index'])->name('Lien_He_index');
+/*
+|--------------------------------------------------------------------------
+| Trang liên hệ
+|--------------------------------------------------------------------------
+*/
 
-//hiển thị trang tin tức
-Route::get('/Tin_Tuc', function () {
+Route::view('/lien-he', 'Lien_He')->name('lien_he.form');
+Route::post('/lien-he/store', [Lien_He_Controller::class, 'store'])->name('lien_he.store');
+Route::get('/lien-he/index', [Lien_He_Controller::class, 'index'])->name('lien_he.index');
+
+/*
+|--------------------------------------------------------------------------
+| Trang tin tức công khai (hiển thị)
+|--------------------------------------------------------------------------
+*/
+Route::get('/tin-tuc', function () {
     $tintuc = DB::table('tin_tuc')->orderByDesc('ma_tin_tuc')->get();
     return view('Tin_Tuc', compact('tintuc'));
-})->name('Tin-Tuc');
+})->name('tin_tuc');
 
-
-//chức năng và hiển thị của danh sách tin tức
-Route::prefix('posts')->controller(Tin_Tuc_Controller::class)->name('posts.')->group(function () {
+/*
+|--------------------------------------------------------------------------
+| Quản lý bài viết tin tức
+|--------------------------------------------------------------------------
+*/
+Route::prefix('posts')->name('posts.')->controller(Tin_Tuc_Controller::class)->group(function () {
     Route::get('/index', 'index')->name('index');
     Route::get('/create', 'create')->name('create');
     Route::post('/store', 'store')->name('store');
-    Route::get('/destroy/{ma_tin_tuc}', 'destroy')->name('destroy');
     Route::get('/{ma_tin_tuc}', 'edit')->name('edit');
     Route::put('/{ma_tin_tuc}', 'update')->name('update');
-    
+    Route::get('/destroy/{ma_tin_tuc}', 'destroy')->name('destroy');
 });
 
-
-//Trang quản lý voucher và các chức năng
+/*
+|--------------------------------------------------------------------------
+| Quản lý mã giảm giá (voucher)
+|--------------------------------------------------------------------------
+*/
 Route::prefix('vouchers')->name('vouchers.')->controller(VoucherController::class)->group(function () {
     Route::get('/index', 'index')->name('index');
     Route::get('/create', 'create')->name('create');
@@ -42,16 +58,22 @@ Route::prefix('vouchers')->name('vouchers.')->controller(VoucherController::clas
     Route::delete('/{ma_giam_gia}', 'destroy')->name('destroy');
 });
 
-use App\Http\Controllers\TaiKhoanController;
+/*
+|--------------------------------------------------------------------------
+| Quản lý tài khoản (admin, khách hàng, nhân viên)
+|--------------------------------------------------------------------------
+*/
+Route::prefix('tai-khoan')->name('tai_khoan.')->controller(TaiKhoanController::class)->group(function () {
+    Route::get('/', 'chonLoai')->name('chon');
+    Route::get('/{loai}', 'index')->name('index');
+    Route::get('/chi-tiet/{ma_tai_khoan}', 'show')->name('show');
+    Route::post('/update-vai-tro/{ma_tai_khoan}', 'updateVaiTro')->name('update');
+    Route::delete('/xoa/{ma_tai_khoan}', 'destroy')->name('destroy');
+});
 
-//Trang quản lý tài khoản và các chức năng
-Route::get('/tai-khoan', [TaiKhoanController::class, 'chonLoai'])->name('tai_khoan.chon');
-Route::get('/tai-khoan/{loai}', [TaiKhoanController::class, 'index'])->name('tai_khoan.index');
-Route::get('/tai-khoan/chi-tiet/{ma_tai_khoan}', [TaiKhoanController::class, 'show'])->name('tai_khoan.show');
-Route::post('/tai-khoan/update-vai-tro/{ma_tai_khoan}', [TaiKhoanController::class, 'updateVaiTro'])->name('tai_khoan.update');
-Route::delete('/tai-khoan/xoa/{ma_tai_khoan}', [TaiKhoanController::class, 'destroy'])->name('tai_khoan.destroy');
-
-use App\Http\Controllers\ThongKeController;
-
-//Trang thống kê và chức năng
+/*
+|--------------------------------------------------------------------------
+| Trang thống kê doanh thu
+|--------------------------------------------------------------------------
+*/
 Route::get('/thong-ke', [ThongKeController::class, 'index'])->name('thongke.index');

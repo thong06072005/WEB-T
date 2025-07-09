@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Post - Tin Tức</title>
+    <title>Tin Tức - New Post</title>
     <link rel="icon" href="{{ asset('image/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -90,7 +90,7 @@
                             </div>
 
                             <div class="text-center">
-
+                    
                                 <button type="submit" class="btn btn-primary px-4">Xác Nhận</button>
                                 <a href="{{ route('posts.index') }}" class="btn btn-primary px-4">Hủy</a>
 
